@@ -1,10 +1,10 @@
 import { Container } from './styles';
 import PropTypes from 'prop-types';
 
-export function ButtonText({ title, ...rest }) {
+export function ButtonText({ title, icon = null, ...rest }) {
     return (
         <Container type="button" {...rest}>
-            {title}
+            {icon}{title}
         </Container>
     );
 }
@@ -12,4 +12,5 @@ export function ButtonText({ title, ...rest }) {
 ButtonText.propTypes = {
     title: PropTypes.string.isRequired,
     isActive: PropTypes.bool,
+    icon: PropTypes.element,
 };

@@ -10,20 +10,6 @@ export const Container = styled.div`
     margin-bottom: 0.8rem;
     border-radius: 1rem;
 
-    ${({ theme, $isnew }) =>
-        $isnew === 'true'
-            ? `
-            color: ${theme.COLORS.GRAY_300};
-            background-color: transparent;
-            border: 1px dashed ${theme.COLORS.WHITE};
-            
-            `
-            : `
-            color: ${theme.COLORS.WHITE};
-            background-color: ${theme.COLORS.BACKGROUND_600};
-            `};
-    
-
     > svg {
         margin-left: 1.6rem;
     }
@@ -40,13 +26,5 @@ export const Container = styled.div`
             font-size: 1.6rem;
             color: ${({ theme }) => theme.COLORS.GRAY_300};
         }
-    }
-
-    > button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 0;
-        background: transparent;
     }
 `;

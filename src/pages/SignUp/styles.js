@@ -11,7 +11,7 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
     padding: 0 13.6rem;
 
     > h1 {
@@ -32,19 +32,29 @@ export const Form = styled.form`
         margin-bottom: 4.8rem;
     }
 
-    > a {
-        align-self: center;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        font-size: 1.4rem;
-        color: ${({ theme }) => theme.COLORS.ROSE};
-        margin-top: 4.2rem;
-
-        svg {
-            font-size: 2rem;
-        }
+    > button:first-child {
+        font-size: 1.6rem;
     }
+
+`;
+
+export const BackNavigation = styled.div`
+    margin: 0 auto;
+    margin-top: 4.2rem;
+    button {
+            color: ${({ theme }) => theme.COLORS.ROSE};
+            align-self: center;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            svg {
+                font-size: 2rem;
+            }
+        }
 `;
 
 export const Background = styled.div`

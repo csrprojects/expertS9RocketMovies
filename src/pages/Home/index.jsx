@@ -4,69 +4,73 @@ import { Header } from '../../components/Header';
 import { Button } from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth/useAuth';
 
 export function Home() {
+    const { signOut } = useAuth();
     const navigate = useNavigate();
+    const [movies, setMovies] = useState([]);
+    const [search, setSearch] = useState('');
+
+    useEffect(() => {
+        async function fetchMovies() {
+            try {
+                const response = await api.get(`/notes?title=${search}`);
+                setMovies(response.data);
+            } catch (error) {
+                if (error.response.data.status) {
+                    if (error.response.data.status === 401) {
+                        handleSignOut();
+                    } else {
+                        alert(
+                            `${error.response.data.status} : ${error.response.data.error}`
+                        );
+                    }
+                } else if (error.message) {
+                    alert(error.message);
+                } else {
+                    alert('Não foi possível buscar os filmes');
+                }
+            }
+        }
+        fetchMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [search]);
 
     const handleNavigate = (route) => {
         navigate(route);
     };
 
+    function handleSignOut() {
+        navigate('/');
+        signOut();
+    }
+
     return (
         <Container>
-            <Header />
+            <Header onChange={(e) => setSearch(e.target.value)} />
             <Main>
                 <Title>
                     <h1>Meus Filmes</h1>
                     <Button
                         title="Adicionar Filme"
                         icon={FiPlus}
-                        onClick={()=>handleNavigate('/new')}
+                        onClick={() => handleNavigate('/new')}
                     />
                 </Title>
                 <Posts>
-                    <MoviePost
-                        data={{
-                            id: 1,
-                            title: 'Interestellar',
-                            rating: 4,
-                            tags: [
-                                { id: 1, name: 'Ficção Científica' },
-                                { id: 2, name: 'Drama' },
-                                { id: 3, name: 'Família' },
-                            ],
-                            text: 'Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de',
-                        }}
-                        onClick={()=>handleNavigate('/movie/1')}
-                    />
-                    <MoviePost
-                        data={{
-                            id: 2,
-                            title: 'Interestellar',
-                            rating: 3,
-                            tags: [
-                                { id: 1, name: 'Ficção Científica' },
-                                { id: 2, name: 'Drama' },
-                                { id: 3, name: 'Família' },
-                            ],
-                            text: 'Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de',
-                        }}
-                        onClick={()=>handleNavigate('/movie/2')}
-                    />
-                    <MoviePost
-                        data={{
-                            id: 3,
-                            title: 'Interestellar',
-                            rating: 5,
-                            tags: [
-                                { id: 1, name: 'Ficção Científica' },
-                                { id: 2, name: 'Drama' },
-                                { id: 3, name: 'Família' },
-                            ],
-                            text: 'Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando mensagens codificadas através de',
-                        }}
-                        onClick={()=>handleNavigate('/movie/3')}
-                    />
+                    {movies &&
+                        movies.map((movie, index) => (
+                            <MoviePost
+                                key={index}
+                                data={movie}
+                                onClick={() =>
+                                    handleNavigate(`/movie/${movie.id}`)
+                                }
+                            />
+                        ))}
                 </Posts>
             </Main>
         </Container>

@@ -20,7 +20,7 @@ export const Section = styled.section`
     gap: 2.4rem;
     overflow-y: scroll;
     height: 100%;
-    scrollbar-width:auto;
+    scrollbar-width: auto;
     scrollbar-color: ${({ theme }) => theme.COLORS.ROSE} ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
     &::-webkit-scrollbar {
@@ -35,19 +35,7 @@ export const Section = styled.section`
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     }
 
-    > a {
-        font-size: 1.6rem;
-        display: flex;
-        align-items: center;
-        color: ${({ theme }) => theme.COLORS.ROSE};
-        gap: 0.8rem;
-        margin-top: 4rem;
-        svg {
-            font-size: 20.4rem;
-        }
-    }
-
-    P {
+    p {
         font-size: 1.6rem;
         line-height: 2.4rem;
         color: ${({ theme }) => theme.COLORS.WHITE_100};
@@ -84,6 +72,7 @@ export const Publish = styled.div`
         > img {
             border-radius: 50%;
             width: 1.6rem;
+            margin-right: 0.2rem;
         }
     }
 `;
@@ -91,4 +80,28 @@ export const Publish = styled.div`
 export const Tags = styled.div`
     display: flex;
     gap: 0.8rem;
+    margin: 1.6rem 0;
+`;
+
+export const Nav = styled.nav`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    > button {
+        font-size: 1.6rem;
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+        color: ${({ theme }) => theme.COLORS.ROSE};
+        gap: 0.8rem;
+        margin-top: 4rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        svg {
+            font-size: 20.4rem;
+        }
+    }
 `;

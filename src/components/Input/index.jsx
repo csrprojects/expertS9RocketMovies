@@ -1,21 +1,11 @@
 import { Container } from './styles';
-import { FiPlus } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 
-export function Input({ icon: Icon = null, isnew = false, ...rest }) {
+export function Input({ icon: Icon = null, ...rest }) {
     return (
-        <Container $isnew={isnew.toString()}>
+        <Container>
             {Icon && <Icon size={20} />}
             <input {...rest} />
-            {isnew && (
-                <button
-                    type="button"
-                    onClick={onclick}
-                    className={isnew ? 'button-add' : 'button-delete'}
-                >
-                    <FiPlus />
-                </button>
-            )}
         </Container>
     );
 }

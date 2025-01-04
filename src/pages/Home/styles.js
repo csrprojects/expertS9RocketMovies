@@ -39,7 +39,7 @@ export const Posts = styled.section`
     flex-direction: column;
     gap: 2.4rem;
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     margin-top: 3.8rem;
     overflow-y: scroll;
 

@@ -17,12 +17,15 @@ width: 100%;
     color: ${({ theme }) => theme.COLORS.ROSE};
   }
 
-  > a{
+  > button {
     display: flex;
     gap: 0.8rem;
     align-items: center;
     color: ${({ theme }) => theme.COLORS.ROSE};
     font-size: 1.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 }
 `;

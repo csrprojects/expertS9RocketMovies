@@ -11,6 +11,10 @@ export const Container = styled.button`
     border: none;
     border-radius: 1.6rem;
     cursor: pointer;
+    > footer {
+        display: flex;
+        gap: 0.8rem;
+    }
 `;
 
 export const Text = styled.div`

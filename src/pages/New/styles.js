@@ -20,8 +20,8 @@ export const Main = styled.main`
 `;
 
 export const Footer = styled.footer`
-width: 100%;
-height: 10vh;
+    width: 100%;
+    height: 10vh;
 `;
 
 export const Title = styled.div`
@@ -30,12 +30,15 @@ export const Title = styled.div`
     gap: 2.4rem;
     margin-top: 4rem;
 
-    > a {
+    > button {
         display: flex;
         align-items: center;
         gap: 1rem;
         font-size: 1.6rem;
         color: ${({ theme }) => theme.COLORS.ROSE};
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 
     > h1 {
@@ -52,7 +55,7 @@ export const Form = styled.form`
     width: 100%;
     overflow-y: auto;
 
-    scrollbar-width:auto;
+    scrollbar-width: auto;
     scrollbar-color: ${({ theme }) => theme.COLORS.ROSE} ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
     &::-webkit-scrollbar {
@@ -73,8 +76,8 @@ export const Form = styled.form`
 `;
 
 export const Space = styled.div`
-        display: flex;
-        gap: 4rem;
+    display: flex;
+    gap: 4rem;
 `;
 
 export const Tags = styled.div`
@@ -82,18 +85,13 @@ export const Tags = styled.div`
     flex-direction: column;
     gap: 2.4rem;
     > div {
+        width: 100%;
         display: flex;
+        flex-wrap: wrap;
         gap: 2.4rem;
-        height: 8.8rem;
         padding: 1.6rem;
         border-radius: 0.8rem;
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-
-        > span {
-            display: flex;
-            align-items: center;
-            font-size: 1.6rem;
-        }
 
         > div {
             display: flex;
@@ -105,11 +103,6 @@ export const Tags = styled.div`
             > input {
                 width: 13rem;
                 padding: 0;
-            }
-
-            > button {
-                font-size: 2.4rem;
-                color: ${({ theme }) => theme.COLORS.ROSE};
             }
         }
     }

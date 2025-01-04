@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 export function Textarea({value, ...rest}) {
   return (
-    <Container {...rest}>
-      {value}
+    <Container value={value} {...rest}>
     </Container>
   );
 }

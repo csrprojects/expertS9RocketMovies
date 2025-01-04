@@ -48,7 +48,7 @@ export const Profile = styled.div`
             color: ${({ theme }) => theme.COLORS.WHITE_100};
         }
 
-        > a {
+        > button {
             font-size: 1.4rem;
             color: ${({ theme }) => theme.COLORS.GRAY_300};
         }
