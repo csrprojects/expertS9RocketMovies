@@ -21,7 +21,6 @@ export function SignIn() {
         <Container>
             <Form>
                 <h1>Rocket Movies</h1>
-                <h2>{import.meta.env.VITE_API_URL}</h2>
                 <p>Aplicação para acompanhar tudo que assistir.</p>
                 <h2>Faça seu login</h2>
                 <Input placeholder="E-mail" icon={FiMail} type="text" onChange={e=>setEmail(e.target.value)} />
